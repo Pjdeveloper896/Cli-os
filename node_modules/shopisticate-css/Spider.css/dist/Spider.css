@@ -1,0 +1,336 @@
+/* Design Tokens (CSS Variables) */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --font-base: 'Segoe UI', sans-serif;
+  --font-heading: 'Arial', sans-serif;
+  --radius: 4px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 32px;
+  --space-xl: 64px;
+  --black: #000;
+  --white: #fff;
+  --gray-light: #f4f4f4;
+  --gray-dark: #333;
+  --accent-color: #ff5733;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --success-color: #28a745;
+  --info-color: #17a2b8;
+}
+
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-base);
+  background-color: var(--gray-light);
+  color: var(--gray-dark);
+}
+
+/* Responsive Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+/* Utility Classes */
+.m-1 { margin: var(--space-sm); }
+.p-1 { padding: var(--space-sm); }
+.m-2 { margin: var(--space-md); }
+.p-2 { padding: var(--space-md); }
+.m-3 { margin: var(--space-lg); }
+.p-3 { padding: var(--space-lg); }
+.m-4 { margin: var(--space-xl); }
+.p-4 { padding: var(--space-xl); }
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.rounded { border-radius: var(--radius); }
+.shadow { box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+
+.bg-primary { background-color: var(--primary-color); }
+.bg-secondary { background-color: var(--secondary-color); }
+.bg-accent { background-color: var(--accent-color); }
+.bg-danger { background-color: var(--danger-color); }
+.bg-warning { background-color: var(--warning-color); }
+.bg-success { background-color: var(--success-color); }
+.bg-info { background-color: var(--info-color); }
+
+.text-primary { color: var(--primary-color); }
+.text-secondary { color: var(--secondary-color); }
+.text-accent { color: var(--accent-color); }
+.text-danger { color: var(--danger-color); }
+.text-warning { color: var(--warning-color); }
+.text-success { color: var(--success-color); }
+.text-info { color: var(--info-color); }
+
+.d-flex { display: flex; }
+.justify-center { justify-content: center; }
+.align-center { align-items: center; }
+
+.d-grid { display: grid; }
+.grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+
+.hide { display: none; }
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(20px); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.fade { animation: fadeIn 1s ease-in-out forwards; }
+.fade-out { animation: fadeOut 1s ease-in-out forwards; }
+.bounce { animation: bounce 1s ease-in-out infinite; }
+
+/* Dark Mode */
+[data-theme="dark"] {
+  background-color: #121212;
+  color: var(--white);
+}
+
+[data-theme="dark"] .bg-primary {
+  background-color: #1e90ff;
+}
+
+[data-theme="dark"] .text-primary {
+  color: var(--white);
+}
+
+/* Custom Card Design */
+.card {
+  background-color: var(--white);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  padding: var(--space-md);
+  margin: var(--space-sm);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Flexbox Grid System */
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-items-start {
+  align-items: flex-start;
+}
+
+.align-items-end {
+  align-items: flex-end;
+}
+
+/* Button Styles */
+.btn {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-md);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary { background-color: var(--primary-color); color: var(--white); }
+.btn-secondary { background-color: var(--secondary-color); color: var(--white); }
+.btn-accent { background-color: var(--accent-color); color: var(--white); }
+.btn-danger { background-color: var(--danger-color); color: var(--white); }
+.btn-warning { background-color: var(--warning-color); color: var(--white); }
+.btn-success { background-color: var(--success-color); color: var(--white); }
+.btn-info { background-color: var(--info-color); color: var(--white); }
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-disabled {
+  background-color: var(--gray-light);
+  color: var(--gray-dark);
+  cursor: not-allowed;
+}
+
+/* Tailwind-like Utility Classes */
+.w-full { width: 100%; }
+.h-full { height: 100%; }
+
+.text-sm { font-size: 0.875rem; }
+.text-lg { font-size: 1.25rem; }
+
+.bg-light { background-color: var(--gray-light); }
+.bg-dark { background-color: var(--gray-dark); }
+
+.m-auto { margin: auto; }
+.p-auto { padding: auto; }
+
+.border { border: 1px solid var(--gray-dark); }
+.border-radius { border-radius: var(--radius); }
+
+.flex-wrap { flex-wrap: wrap; }
+.items-stretch { align-items: stretch; }
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-start { justify-content: flex-start; }
+
+/* Button Disabled */
+.btn[disabled], .btn-disabled {
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+/* Responsive Media Queries */
+@media screen and (max-width: 768px) {
+  .grid-cols-2 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Dark Mode */
+[data-theme="dark"] {
+  background-color: #121212;
+  color: var(--white);  /* Default text color in dark mode */
+}
+
+[data-theme="dark"] .bg-primary {
+  background-color: #1e90ff;
+}
+
+[data-theme="dark"] .text-primary {
+  color: var(--white); /* Primary text color for dark mode */
+}
+
+[data-theme="dark"] .text-secondary {
+  color: var(--gray-light); /* Secondary text color for dark mode */
+}
+
+[data-theme="dark"] .text-accent {
+  color: var(--accent-color); /* Accent text color for dark mode */
+}
+
+[data-theme="dark"] .text-danger {
+  color: var(--danger-color); /* Danger text color for dark mode */
+}
+
+[data-theme="dark"] .text-warning {
+  color: var(--warning-color); /* Warning text color for dark mode */
+}
+
+[data-theme="dark"] .text-success {
+  color: var(--success-color); /* Success text color for dark mode */
+}
+
+[data-theme="dark"] .text-info {
+  color: var(--info-color); /* Info text color for dark mode */
+}
+
+/* Additional elements for dark mode */
+[data-theme="dark"] .card {
+  background-color: var(--gray-dark); /* Dark card background */
+}
+
+[data-theme="dark"] .btn {
+  background-color: var(--gray-dark);
+  color: var(--white);
+}
+
+[data-theme="dark"] .btn:hover {
+  background-color: var(--primary-color);
+}
+
+[data-theme="dark"] .btn-primary {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+[data-theme="dark"] .btn-secondary {
+  background-color: var(--secondary-color);
+  color: var(--white);
+}
+
+[data-theme="dark"] .btn-accent {
+  background-color: var(--accent-color);
+  color: var(--white);
+}
+
+[data-theme="dark"] .btn-danger {
+  background-color: var(--danger-color);
+  color: var(--white);
+}
+
+[data-theme="dark"] .btn-warning {
+  background-color: var(--warning-color);
+  color: var(--white);
+}
+
+[data-theme="dark"] .btn-success {
+  background-color: var(--success-color);
+  color: var(--white);
+}
+
+[data-theme="dark"] .btn-info {
+  background-color: var(--info-color);
+  color: var(--white);
+}

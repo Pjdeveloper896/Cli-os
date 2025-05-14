@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLI OS</title>
+  <link rel="stylesheet" href="/node_modules/shopisticate-css/Spider.css/dist/Spider.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Import Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script src="https://pjdeveloper896.github.io/Spider.css/dist/Spider.js" type="text/javascript" charset="utf-8"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+
+<body data-theme="dark" class="bg-dark w-full">
+  <div id="terminal" spy="bounce rounded m2" class="card text-success align-items-center">Browser CLI OS v1.0\nType `help` to begin</div>
+ <h1> <i class="material-icons">cloud</i></h1>
+  <input type="text" id="commandInput" placeholder="Type a command..." autofocus autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="w-full bg-dark text-success">
+  <script>
+    const terminal = document.getElementById('terminal');
+    const input = document.getElementById('commandInput');
+    let currentPath = '/home/user';
+    
+    function print(text) {
+      terminal.innerText += `\n${text}`;
+      terminal.scrollTop = terminal.scrollHeight;
+    }
+    
+    async function runCommand(cmd) {
+      print("> " + cmd);
+      try {
+        const res = await fetch('http://localhost:3000/command', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ command: cmd, path: currentPath })
+        });
+        const data = await res.json();
+        if (cmd.startsWith('cd ') && data.response.startsWith('Changed to')) {
+          const target = cmd.split(' ')[1];
+          currentPath = target.startsWith('/') ? target : currentPath + '/' + target;
+        }
+        print(data.response);
+      } catch (err) {
+        print("Error: Could not connect to backend.");
+      }
+    }
+    
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        runCommand(input.value);
+        input.value = '';
+      }
+    });
+    
+    // Focus input when user taps the screen
+    terminal.addEventListener('click', () => input.focus());
+    window.onload = () => input.focus();
+  </script>
+</body>
+
+</html>

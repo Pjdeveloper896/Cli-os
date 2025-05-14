@@ -1,0 +1,25 @@
+{
+  "name": "shopisticate-css",
+  "version": "1.0.0",
+  "description": "A lightweight and responsive css framework.",
+  "main": "spider.css",
+  "scripts": {
+    "test": "dev "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pjdeveloper896/Spider.css.git"
+  },
+  "keywords": [
+    "css",
+    "framework",
+    "responsive",
+    "shopisticate-css"
+  ],
+  "author": "prasoon singh jadon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pjdeveloper896/Spider.css/issues"
+  },
+  "homepage": "https://github.com/Pjdeveloper896/Spider.css#readme"
+}
